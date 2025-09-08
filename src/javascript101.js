@@ -9,9 +9,8 @@ function ex1() {
     var newperson = person;
     person.firstName = "Jun";
     cars[0] = "what";
-    
-    return "" // e.g., "YournalSaab"
 
+    return newperson.firstName + newcars[0] // e.g., "YournalSaab"
 }
 
 function ex2() {
@@ -30,10 +29,9 @@ function ex2() {
             console.log("A" > "B")
             console.log("a" > "A")
             console.log(true != true)
-
     */
 
-    return "" // e.g., the result of the first two expressions is "534NaN"
+    return "534NaN152-1truefalsetruefalse" // e.g., the result of the first two expressions is "534NaN"
 
 }
 
@@ -45,7 +43,12 @@ function ex3(firstNumber, secondNumber) {
             - else return the string "NaN"
 
     */
-      
+
+    if (typeof firstNumber === "number" && typeof secondNumber === "number") {
+        return firstNumber + secondNumber
+    } else {
+        return "NaN"
+    }
 }
 
 function ex4(persons) {
@@ -69,8 +72,13 @@ function ex4(persons) {
         (in this example, the function return 44)
     */
 
-    return ""
-   
+    let youngestAge = Infinity;
+    for (let i = 0; i < persons.length; i++) {
+        if (persons[i].name === "The Chosen One") {
+            youngestAge = persons[i].age;
+        }
+    }
+    return youngestAge;   
 }
 
 function ex5(str) {
@@ -80,11 +88,14 @@ function ex5(str) {
             - if yes, return the Boolean true
             - else, return false 
 
-        **A palindrome is a string which reads the same backward as forward. For example, “Race Car” and “Anna” are palindromes. “Apple Pie” and “John” are not. Ignore spaces in deciding a palindrome.
+        **A palindrome is a string which reads the same backward as forward. For example, "Race Car" and "Anna" are palindromes. "Apple Pie" and "John" are not. Ignore spaces in deciding a palindrome.
 
     */
 
-    return ""
+    const cleanStr = str.replace(/\s/g, '').toLowerCase();
+    const reversedStr = cleanStr.split('').reverse().join('');
+    
+    return cleanStr === reversedStr;
 
 }
 
@@ -106,8 +117,11 @@ function computeAverageScore(students) {
         (in this example, the function return 60)
 
     */
-    let result = 0
-   
+    var result = 0
+    for (let i = 0; i < students.length; i++) {
+        result += students[i].score
+    }
+    result = result / students.length
 
     return result
 }
@@ -123,7 +137,11 @@ function checkStatus(student) {
           
         (in this example, the function return 'Pass')
 */
-   
+    if (student.score >= 50) {
+        return "Pass"
+    } else {
+        return "Fail"
+    }
 }
 
 module.exports = { ex1, ex2, ex3, ex4, ex5, computeAverageScore, checkStatus }
